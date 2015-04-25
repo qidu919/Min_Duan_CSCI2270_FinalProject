@@ -14,7 +14,19 @@ struct player
     struct player* right;
     struct player* parent;
 };
+/* List of functions:
+Initialize Queues: Hash tables for solo games and team games
+Determine rank
+EnterQueue
+LeaveQueue
+NewPlayer
+DisplayPlayerInfo
+DisplayMatches: the already confirmed matches
+Display Players still in Queue
+Enter CreateTeam
+Enter team queue
 
+*/
 
  player* newPlayer(string pname, int pmmr, int wins )
 {
@@ -111,10 +123,10 @@ void Preorder(player *root) {
 
 int main()
 {
-  struct node* root = NULL, *temp, *succ, *min;
+  //struct node* root = NULL, *temp, *succ, *min;
 
 
-deleteAndReplaceRightMax(root, 50);
+/*deleteAndReplaceRightMax(root, 50);
 std::cout<<"Inorder: ";
   Inorder(root);
     std::cout<<"\n";
@@ -126,5 +138,5 @@ std::cout<<"Postorder: ";
 std::cout<<"Preorder: ";
 Preorder(root);
 std::cout << "\n";
-  return 0;
+  return 0;*/
 }
