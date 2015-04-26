@@ -167,7 +167,76 @@ void lolQueue::addSoloPlayer (int index, player* inPlayer){
 
 
 void lolQueue::leaveSoloQueue(player *inPlayer){
+    /*
+    this function is made to move a player out of his/her respective position in the hash table
+    */
+    int index;                                          //we need to get the index of the player's rank first
+    if(inPlayer->rankt == "Bronze"){
+            index = 0;
+        }
+        else if(inPlayer->rankt == "Silver"){
+            index = 1;
+        }
+        else if(inPlayer->rankt == "Gold"){
+            index = 2;
+        }
+        else if(inPlayer->rankt == "Platinum"){
+            index = 3;
+        }
+        else if(inPlayer->rankt == "Diamond"){
+            index = 4;
+        }
+        else if(inPlayer->rankt == "Master"){
+            index = 5;
+        }
+        else if(inPlayer->rankt == "Challenger"){
+            index = 6;
+        }
 
+    if (inPlayer == soloHashTable[index]){      //checks to see if the player to be deleted is the head of its hash queue
+        if (soloHashTable[index]->next == NULL){
+            soloHashTable[index] = NULL;            //if it's alone, simply declare the head null and readjust the next/prev of the removed player
+        }
+        else{
+            soloHashTable[index]->next->prev = NULL;        //if it's not alone, move the next player to the head and readjust next/prev
+            soloHashTable[index] = soloHashTable[index]->next;
+            player* node = soloHashTable[index];
+            int i = 0;                                  //this portion and ones like it in the function
+            while (node != NULL){                           //are made to reassign queuepositions
+                node->queuePosition = i;                    //after a player has been removed
+                node = node->next;
+                i++;
+            }
+
+            inPlayer->next = NULL;          //since the removed player is now free, both its next and prev must be NULL (its previous was already null in this case because it was the head)
+        }
+    }
+    else if (inPlayer->next == NULL){       //checks to see if the node to be removed is the last node in its queue
+        inPlayer->prev->next = NULL;
+        inPlayer->prev = NULL;                  //turns the second to last player's next to NULL in order to be the tail
+        player* node = soloHashTable[index];
+        int i = 0;
+        while (node != NULL){
+            node->queuePosition = i;        //see explanation for the similar while loop above
+            node = node->next;
+            i++;
+        }
+    }
+    else{                               //in the last case, where it's in between two tangible nodes, we adjust the next/prev of its neighbors to seal it out
+        inPlayer->next->prev = inPlayer->prev;
+        inPlayer->prev->next = inPlayer->next;
+        inPlayer->next = NULL;              //reset the next/prev of the removed player
+        inPlayer->prev = NULL;
+        int i = 0;
+        player* node = soloHashTable[index];
+        while (node != NULL){
+            node->queuePosition = i;
+            node = node->next;
+            i++;
+        }
+    }
+    inPlayer->isInQueue = false;            //resetting the isInQueue and position
+    inPlayer->queuePosition = 0;
 }
 
 
