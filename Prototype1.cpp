@@ -332,15 +332,70 @@ void lolQueue::displayPlayer (player* inPlayer){
 
 
 void lolQueue::displayMatches (){
+	/*
+	 * displays all matches that are taking place
+	 * */
 
+
+   if(soloMatchVector.size() == 0)		//checks if no matches exist
+    {
+        cout<<"No matches currently active."<<endl;
+    }
+    else{
+        cout<<"The current ongoing matches are: "<<endl;
+        for(int i = 0; i < soloMatchVector.size(); i++)
+        {
+            cout<<"Match ID: "<<soloMatchVector.at(i)->ID<<endl;			//prints all the matches based on the given vector
+            cout<<"Player - Rank"<<endl;
+            for(int j = 0; j < 10; j++)
+            {
+                cout<<soloMatchVector.at(i)->playerArray[j]->ign<<" - "<<soloMatchVector.at(i)->playerArray[j]->rankt<<endl;
+            }
+        }
+    }
 }
-void lolQueue::displaySoloQueue (){
 
+void lolQueue::displaySoloQueue (){
+	/*
+	 * displays all players still in queue
+	 * */
+    bool isTherePlayers = false;
+    cout<<"Displaying current players in Solo Queue:"<<endl;
+    for(int i = 0; i < 7; i++)
+    {
+        player *header = soloHashTable[i];
+        while(header != NULL)
+        {
+           cout<<"Username: "<<header->ign<<" - Rank: "<<header->rankt<<endl;
+           header = header->next;
+           isTherePlayers = true;
+        }
+    }
+    if(isTherePlayers == false)
+    {
+        cout<<"There is no players currently in the queue."<<endl;
+    }
 }
 
 void lolQueue::displayInactives(){
+	/*
+	 * Displays all players who are neither in queue nor in a match
+	 * */
+    bool isTherePlayers = false;
+    cout<<"The following players are inactive: "<<endl;
+   for(int i = 0; i < playerVector.size(); i++)
+   {
+       if((playerVector.at(i)->isInQueue == false) && (playerVector.at(i)->isInMatch == false))
+        {
+            cout<<"Username: "<<playerVector.at(i)->ign<<" | Rank: "<<playerVector.at(i)->rankt<<endl;
+            isTherePlayers = true;
+        }
+   }
+   if(isTherePlayers == false)
+   {
+       cout<<"There are currently no inactive players."<<endl;
+   }
 }
-
 /*
 Function Prototype:
 void createSoloMatch (int index);
