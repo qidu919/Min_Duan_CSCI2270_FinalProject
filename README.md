@@ -16,7 +16,8 @@ players. This is in order to simulate the matchmaking system of the real League 
 creating relatively fair matches. Then, once a queue corresponding to a division is filled with 10 players, those 10
 will be disengaged from the queue and placed in their own match.
 
-How to Run) 
+How to Run) driver.cpp is the main calling program that calls the class functions that are included in prototype1.h and
+prototype1.cpp.
 
 Dependencies) This program should be run with C++11. Also, must be run in a terminal.
 
