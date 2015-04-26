@@ -78,13 +78,13 @@ int main(){
                     }
                 }
 
-                if (tempplayer == NULL){
+                if (tempplayer == NULL){            //checks if user exists
                     cout<<"Player has not been created."<<endl;
                 }
 
                 else if (!tempplayer->isInQueue){
-                    if (tempplayer->isInMatch){
-                        cout<<"Player is currently in match."<<endl;
+                    if (tempplayer->isInMatch){         //for these two conditions, it checks if the user's either in a match or already out of queue and
+                        cout<<"Player is currently in match."<<endl;        //not in a match
                     }
                     else{
                         cout<<"Player is already out of queue"<<endl;
@@ -92,12 +92,13 @@ int main(){
                 }
 
                 else {
-                    mainQueue.leaveSoloQueue(tempplayer);
+                    mainQueue.leaveSoloQueue(tempplayer);       //if all conditions are met, it goes to leavesoloqueue
                 }
                 printMenu();
 
                 break;
             }
+
 
             case 3:{
                 /*
@@ -120,7 +121,7 @@ int main(){
                 }
 
                 else{
-                    mainQueue.enterSoloQueue(tempplayer);
+                    mainQueue.enterSoloQueue(tempplayer);       //if all conditions are met, it goes to entersoloqueue
                 }
                 printMenu();
 
