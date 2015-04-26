@@ -18,7 +18,7 @@ will be disengaged from the queue and placed in their own match.
 
 How to Run) 
 
-Dependencies) This program should be run with C++11.
+Dependencies) This program should be run with C++11. Also, must be run in a terminal.
 
 System Requirements) This program is made for Linux.
 
