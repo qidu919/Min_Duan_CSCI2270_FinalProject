@@ -5,7 +5,18 @@
 #include "Prototype1.h"
 using namespace std;
 
+/*
+Function Prototype:
 
+Function Description:
+
+Example:
+
+Precondition:
+
+Post Condition:
+
+*/
 lolQueue::lolQueue(){
     /*
     This Constructor initializes the newMatchID to 1, so the first match can have an ID 1,
@@ -22,13 +33,30 @@ lolQueue::~lolQueue(){
 
 }
 
+/*
+Function Prototype:
+lolQueue::newPlayer(string pName, int wins)
+
+Function Description:
+This function creates a new player, given the name and number of wins. Additionally,
+queueposition, rankt, isRanked, isInQueue, and isInMatch are all initialized to their
+default values, all the while putting the player in the playervector.
+
+Example:
+string playerName = "Qiu";
+int wins = 3;
+player* lolQueue::newPlayer(playerName, wins);
+
+Precondition:
+Has a name that is non-null and win count is non-negative.
+
+Post Condition:
+Fields in the player struct are all initialized on the heap.
+
+*/
 player* lolQueue::newPlayer(string pName, int wins)
 {
-    /*
-    This function creates a new player, given the name and number of wins. Additionally,
-    queueposition, rankt, isRanked, isInQueue, and isInMatch are all initialized to their
-    default values, all the while putting the player in the playervector.
-    */
+
     player *newp = new player;
     newp->ign = pName;
     newp->queuePosition = 0;
@@ -42,12 +70,21 @@ player* lolQueue::newPlayer(string pName, int wins)
     playerVector.push_back(newp);
     return newp;
 }
-
+/*
+Function Prototype:
+player* determinePlayerRank(player* inPlayer);
+Function Description:
+This function determines a player's rank division based on their number of wins.
+With the given ranges, the player's rankt is set and isRanked is set to true.
+Example:
+player* determinePlayerRank(inPlayer);
+Precondition:
+Must have a non negative ranked wins and must have a node with player info on it.
+Post Condition:
+The struct node must holds true and able to return
+*/
 player* lolQueue::determinePlayerRank(player* inPlayer){
-    /*
-    This function determines a player's rank division based on their number of wins.
-    With the given ranges, the player's rankt is set and isRanked is set to true.
-    */
+
     if (inPlayer->isRanked){
         cout<<"This player is already ranked"<<endl;
     }
@@ -80,12 +117,22 @@ player* lolQueue::determinePlayerRank(player* inPlayer){
         inPlayer->isRanked = true;
     }
 }
-
+/*
+Function Prototype:
+bool alreadyexists(string pname);
+Function Description:
+This function goes through the playervector to see if it can find a match for the
+given name.
+Example:
+string pname = "GODLIKE"
+alreadyexists(pname);
+Precondition:
+there must be a name and a vector to look through, vector must not be NULL
+Post Condition:
+Does not change the vector, just a search.
+*/
 bool lolQueue::alreadyexists(string pname){
-    /*
-    This function goes through the playervector to see if it can find a match for the
-    given name
-    */
+
     bool found = false;
     for (int i = 0; i < playerVector.size(); i++){
         if (playerVector.at(i)->ign == pname){
@@ -97,12 +144,22 @@ bool lolQueue::alreadyexists(string pname){
     return found;
 }
 
+/*
+Function Prototype:
+void enterSoloQueue(player* inPlayer)
+Function Description:
+This function causes the player to be placed into the hashtable.
+Based again on the rank division of the player, an index corresponding to
+the division and the player are placed into the addSoloPlayer function.
+Example:
+enterSoloQueue(inPlayer)
+Precondition:
+There has to be a player with sufficient information in the player struct
+Post Condition:
+That nothing changes during the function
+*/
 void lolQueue::enterSoloQueue(player* inPlayer){
-    /*
-    This function causes the player to be placed into the hashtable.
-    Based again on the rank division of the player, an index corresponding to
-    the division and the player are placed into the addSoloPlayer function.
-    */
+
     if (inPlayer->rankt == "Unranked"){
         cout<<"Player rank has not been verified yet. Please verify rank before attempting to enter queue."<<endl;
     }
@@ -138,11 +195,21 @@ void lolQueue::enterSoloQueue(player* inPlayer){
 }
 
 
-
+/*
+Function Prototype:
+void addSoloPlayer (int index, player* inPlayer);
+Function Description:
+addSoloPlayer is used as the second step in putting a player in the hash table.
+Example:
+int index= 1;
+addSoloPlayer (index, inPlayer)
+Precondition:
+Must have a player index and a player struct
+Post Condition:
+Player is added to the hash table.
+*/
 void lolQueue::addSoloPlayer (int index, player* inPlayer){
-    /*
-    addSoloPlayer is used as the second step in putting a player in the hash table
-    */
+
     inPlayer->isInQueue = true;     // First, it is declared that the player is now in queue
     cout<<"Added to Solo Queue"<<endl;
     if (soloHashTable[index] == NULL){  //if the hash table at the given index is empty, the new player becomes the head at that hash table branch
@@ -164,7 +231,19 @@ void lolQueue::addSoloPlayer (int index, player* inPlayer){
     }
 }
 
-
+/*
+Function Prototype:
+void leaveSoloQueue(player *inPlayer);
+Function Description:
+There will be an option to exist out of the queue (hash table).
+This function is made to move a player out of his/her respective position in the hash table
+Example:
+leaveSoloQueue(inPlayer)
+Precondition:
+PLayer is in queue.
+Post Condition:
+player must be deleted off hash table.
+*/
 
 void lolQueue::leaveSoloQueue(player *inPlayer){
     /*
@@ -262,11 +341,22 @@ void lolQueue::displaySoloQueue (){
 void lolQueue::displayInactives(){
 }
 
+/*
+Function Prototype:
+void createSoloMatch (int index);
+Function Description:
+Once the 10 players of a division have been found, we now need to create a match
+and get empty the hash table at the division index
+Example:
+int index =1;
+createSoloMatch (index);
+Precondition:
+There has to be a player index.
+Post Condition:
+created a solo match with 10 players inside.
+*/
 void lolQueue::createSoloMatch (int index){
-    /*
-    Once the 10 players of a division have been found, we now need to create a match
-    and get empty the hash table at the division index
-    */
+
     cout << "Solo Match Found!"<<endl;
 
 
