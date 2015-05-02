@@ -33,18 +33,19 @@ int main(){
                 /*
                 */
                 string username;
-                int promoWins = 11;     //promoWins is initially 11 so that it is > 10, allowing us to enter the while loop
+                string promoWins = "11";     //promoWins is initially 11 so that it is > 10, allowing us to enter the while loop
 
                 cout<<"Enter Username: "<<endl;     //enter username
                 getline(cin , username);
                 cout<<"Enter Number of Promotional Games out of 10 won: "<<endl;       //enter wins
                 cin >> promoWins;
 
-                while (promoWins > 10 || promoWins < 0){        //we stay here until a valid number of wins is given
-                    if (promoWins > 10 || promoWins < 0){
-                        cout<<"Invalid Number. Please submit a number between 0 and 10: "<<endl;
-                    }
+                while (promoWins != "1" && promoWins != "2" && promoWins != "3" && promoWins != "4" && promoWins != "5" && promoWins != "6" && promoWins != "7" && promoWins != "8" && promoWins != "9" && promoWins != "10" ){        //we stay here until a valid number of wins is given
+                   cout<<"Invalid Input. Please submit a number between 0 and 10: "<<endl;
+      
                     cin>>promoWins;
+                    cin.clear();
+                    cin.ignore(10000,'\n');
 
                 }
                 if (mainQueue.alreadyexists(username)){     //we check if the given username already exists.
