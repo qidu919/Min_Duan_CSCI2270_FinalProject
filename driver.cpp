@@ -53,7 +53,7 @@ int main(){
                 }
                 else{
                     cout<<"Player Created"<<endl;
-                    player* tempplayer = mainQueue.newPlayer(username, promoWins);      //when we find a valid new user, we make a new player, give a rank, and put them in the hashtable
+                    player* tempplayer = mainQueue.newPlayer(username, stoi(promoWins));      //when we find a valid new user, we make a new player, give a rank, and put them in the hashtable
                     cout<<endl;
                     mainQueue.determinePlayerRank(tempplayer);
                     cout<<endl;
