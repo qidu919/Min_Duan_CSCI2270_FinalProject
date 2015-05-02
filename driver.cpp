@@ -40,7 +40,7 @@ int main(){
                 cout<<"Enter Number of Promotional Games out of 10 won: "<<endl;       //enter wins
                 cin >> promoWins;
 
-                while (promoWins != "1" && promoWins != "2" && promoWins != "3" && promoWins != "4" && promoWins != "5" && promoWins != "6" && promoWins != "7" && promoWins != "8" && promoWins != "9" && promoWins != "10" ){        //we stay here until a valid number of wins is given
+                while (promoWins != "0" && promoWins != "1" && promoWins != "2" && promoWins != "3" && promoWins != "4" && promoWins != "5" && promoWins != "6" && promoWins != "7" && promoWins != "8" && promoWins != "9" && promoWins != "10" ){        //we stay here until a valid number of wins is given
                    cout<<"Invalid Input. Please submit a number between 0 and 10: "<<endl;
       
                     cin>>promoWins;
