@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "Prototype1.h"
+#include "Prototype1.cpp"
 using namespace std;
 void printMenu(){
     cout<<"======Main Menu======"<<endl;
