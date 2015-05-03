@@ -17,7 +17,9 @@ creating relatively fair matches. Then, once a queue corresponding to a division
 will be disengaged from the queue and placed in their own match.
 
 How to Run) driver.cpp is the main calling program that calls the class functions that are included in prototype1.h and
-prototype1.cpp.
+prototype1.cpp. To begin, make sure driver.cpp, prototype1.cpp, and prototype1.h are all in the same file. Then, in
+a terminal window in the file with those three functions, type g++ -std=c++11 driver.cpp to compile. After that
+type ./a.out to run.
 
 Dependencies) This program should be run with C++11. Also, must be run in a terminal.
 
